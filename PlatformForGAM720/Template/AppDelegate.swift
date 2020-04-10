@@ -5,7 +5,11 @@
 //  Created by Rachel Saunders on 08/04/2020.
 //  Copyright © 2020 Rachel Saunders. All rights reserved.
 //
+// THIS APP IS SOLELY FOR THE PURPOSE OF ASSIGNMENT 2 FOR GAM720 MODULE AS PART OF THE MASTERS DEGREE FOR CREATIVE APP DEVELOPMENT. ALL PROGRAMMING, NOTES AND ARTWORK BY RACHEL SAUNDERS. THIS IS A TEST TO SEE HOW 2D PLATFORMING WORKS. COPYRIGHT RACHEL SAUNDERS.
+//
+//
 
+// Heres some info thats been changed - Landscape settings disabled, requires full screen, info.plist has added properties - hidden status bar, 
 import UIKit
 
 @UIApplicationMain
