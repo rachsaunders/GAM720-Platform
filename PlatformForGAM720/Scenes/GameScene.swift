@@ -36,11 +36,13 @@ class GameScene: SKScene {
     
     // scale the map properly on screen
     func loadTileMap() {
-        if let exampleTiles = mapNode.childNode(withName: "Example Tiles") as? SKTileMapNode {
+        if let exampleTiles = mapNode.childNode(withName: "Example Tiles Map") as? SKTileMapNode {
             tileMap = exampleTiles
             tileMap.scale(to: frame.size, width: false, multiplier: 1.0)
         }
     }
+    
+    // On the tile map make sure images e.g. trees are child nodes of the floor tiles so they appear
 
     override func update(_ currentTime: TimeInterval) {
         // Called before each frame is rendered

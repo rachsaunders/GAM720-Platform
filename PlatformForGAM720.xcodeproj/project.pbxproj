@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		184D8D5A2444C3DF0071B8EE /* layer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 184D8D592444C3DF0071B8EE /* layer.swift */; };
 		18B6BF5624432F2600BF10A7 /* World1Level1.sks in Resources */ = {isa = PBXBuildFile; fileRef = 18B6BF5524432F2600BF10A7 /* World1Level1.sks */; };
 		18B6BF5924432FE400BF10A7 /* TileSets.sks in Resources */ = {isa = PBXBuildFile; fileRef = 18B6BF5824432FE400BF10A7 /* TileSets.sks */; };
 		18B6BF5C24434DC500BF10A7 /* SKNode+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B6BF5B24434DC500BF10A7 /* SKNode+Extensions.swift */; };
@@ -19,6 +20,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		184D8D592444C3DF0071B8EE /* layer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = layer.swift; sourceTree = "<group>"; };
 		18B6BF5524432F2600BF10A7 /* World1Level1.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = World1Level1.sks; sourceTree = "<group>"; };
 		18B6BF5824432FE400BF10A7 /* TileSets.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = TileSets.sks; sourceTree = "<group>"; };
 		18B6BF5B24434DC500BF10A7 /* SKNode+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SKNode+Extensions.swift"; sourceTree = "<group>"; };
@@ -43,6 +45,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		184D8D582444C3C00071B8EE /* Layers */ = {
+			isa = PBXGroup;
+			children = (
+				184D8D592444C3DF0071B8EE /* layer.swift */,
+			);
+			path = Layers;
+			sourceTree = "<group>";
+		};
 		18B6BF5324432EB500BF10A7 /* Scene Editor Files */ = {
 			isa = PBXGroup;
 			children = (
@@ -94,6 +104,7 @@
 		18BCBAFE243DFD1C001DAF9E /* PlatformForGAM720 */ = {
 			isa = PBXGroup;
 			children = (
+				184D8D582444C3C00071B8EE /* Layers */,
 				18B6BF5A24434DA700BF10A7 /* Extensions */,
 				18B6BF5724432FBB00BF10A7 /* Tiles */,
 				18B6BF5324432EB500BF10A7 /* Scene Editor Files */,
@@ -214,6 +225,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				18BCBB06243DFD1C001DAF9E /* GameScene.swift in Sources */,
+				184D8D5A2444C3DF0071B8EE /* layer.swift in Sources */,
 				18B6BF5C24434DC500BF10A7 /* SKNode+Extensions.swift in Sources */,
 				18BCBB08243DFD1C001DAF9E /* GameViewController.swift in Sources */,
 				18BCBB00243DFD1C001DAF9E /* AppDelegate.swift in Sources */,
