@@ -25,16 +25,16 @@ class GameViewController: UIViewController {
             
             view.presentScene(scene)
             
-            view.ignoreSiblingOrder = true
+            view.ignoresSiblingOrder = true
             
             
-            // This is just for my benefit to show information
+            // This is just for my benefit to show information on FPS, Node count, physics info
+            //
+            //
             view.showsFPS = true
             view.showsNodeCount = true
-            view.showPhysics = true 
+            view.showsPhysics = true
         }
     }
-
-   
     
 }

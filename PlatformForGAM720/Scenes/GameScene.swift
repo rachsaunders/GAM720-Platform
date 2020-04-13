@@ -14,10 +14,33 @@ import SpriteKit
 
 class GameScene: SKScene {
     
+    // Variables
+    
+    var mapNode: SKNode!
+    var tileMap: SKTileMapNode!
+    
+    // Override didMove Function
+    
     override func didMove(to view: SKView) {
-        
+        load(level: "World1Level1")
     }
     
+    
+    func load(level: String) {
+        if let levelNode = SKNode.unarchiveFromFile(file: level) {
+            mapNode = levelNode
+            addChild(mapNode)
+            loadTileMap()
+        }
+    }
+    
+    // scale the map properly on screen
+    func loadTileMap() {
+        if let exampleTiles = mapNode.childNode(withName: "Example Tiles") as? SKTileMapNode {
+            tileMap = exampleTiles
+            tileMap.scale(to: frame.size, width: false, multiplier: 1.0)
+        }
+    }
 
     override func update(_ currentTime: TimeInterval) {
         // Called before each frame is rendered
