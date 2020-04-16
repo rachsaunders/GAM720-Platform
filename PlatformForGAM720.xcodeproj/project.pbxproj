@@ -17,6 +17,8 @@
 		18BCBB0B243DFD1C001DAF9E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 18BCBB09243DFD1C001DAF9E /* Main.storyboard */; };
 		18BCBB0D243DFD1D001DAF9E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 18BCBB0C243DFD1D001DAF9E /* Assets.xcassets */; };
 		18BCBB10243DFD1D001DAF9E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 18BCBB0E243DFD1D001DAF9E /* LaunchScreen.storyboard */; };
+		18F7CD5A2448AB5100FB9406 /* RepeatingBackground.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18F7CD592448AB5100FB9406 /* RepeatingBackground.swift */; };
+		18F7CD5C2448AFD300FB9406 /* GameConstaints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18F7CD5B2448AFD300FB9406 /* GameConstaints.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +34,8 @@
 		18BCBB0C243DFD1D001DAF9E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		18BCBB0F243DFD1D001DAF9E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		18BCBB11243DFD1D001DAF9E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		18F7CD592448AB5100FB9406 /* RepeatingBackground.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepeatingBackground.swift; sourceTree = "<group>"; };
+		18F7CD5B2448AFD300FB9406 /* GameConstaints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameConstaints.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -49,6 +53,7 @@
 			isa = PBXGroup;
 			children = (
 				184D8D592444C3DF0071B8EE /* Layer.swift */,
+				18F7CD592448AB5100FB9406 /* RepeatingBackground.swift */,
 			);
 			path = Layers;
 			sourceTree = "<group>";
@@ -122,6 +127,7 @@
 			children = (
 				18BCBAFF243DFD1C001DAF9E /* AppDelegate.swift */,
 				18BCBB11243DFD1D001DAF9E /* Info.plist */,
+				18F7CD5B2448AFD300FB9406 /* GameConstaints.swift */,
 			);
 			path = Template;
 			sourceTree = "<group>";
@@ -229,6 +235,8 @@
 				18B6BF5C24434DC500BF10A7 /* SKNode+Extensions.swift in Sources */,
 				18BCBB08243DFD1C001DAF9E /* GameViewController.swift in Sources */,
 				18BCBB00243DFD1C001DAF9E /* AppDelegate.swift in Sources */,
+				18F7CD5A2448AB5100FB9406 /* RepeatingBackground.swift in Sources */,
+				18F7CD5C2448AFD300FB9406 /* GameConstaints.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

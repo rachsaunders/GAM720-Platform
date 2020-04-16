@@ -23,6 +23,7 @@ class GameScene: SKScene {
     // Variables
     
     var worldLayer: Layer!
+    var backgroundLayer: RepeatingBackground!
     var mapNode: SKNode!
     var tileMap: SKTileMapNode!
     
@@ -42,11 +43,39 @@ class GameScene: SKScene {
     
     func createLayers() {
         worldLayer = Layer()
+        
+        // Set positions
+        worldLayer.zPosition = GameConstants.ZPositions.worldZ
+        
         addChild(worldLayer)
         worldLayer.layerVelocity = CGPoint(x: -200, y: 0.0)
         
+        backgroundLayer = RepeatingBackground()
+        
+        // Set positions
+        backgroundLayer.zPosition = GameConstants.ZPositions.farBGZ
+        
+        addChild(backgroundLayer)
+        
+        
+        // background
+        for i in 0...1 {
+            let backgroundImage = SKSpriteNode(imageNamed: "exampleBackground")
+            backgroundImage.name = String(i)
+            backgroundImage.scale(to: frame.size, width: false, multiplier: 1.0)
+            // start in bottom corner
+            backgroundImage.anchorPoint = CGPoint.zero
+            backgroundImage.position = CGPoint(x: 0.0 + CGFloat(i) * backgroundImage.size.width, y: 0.0)
+            backgroundLayer.addChild(backgroundImage)
+        }
+        
+        // background is different speed to actual movement - more realistic
+        
+        backgroundLayer.layerVelocity = CGPoint(x: -100.0, y: 0.0)
+        
         load(level: "World1Level1")
-    }
+            
+        }
     
     func load(level: String) {
         if let levelNode = SKNode.unarchiveFromFile(file: level) {
@@ -102,6 +131,7 @@ class GameScene: SKScene {
         
         if gameState == .ongoing {
             worldLayer.update(dt)
+            backgroundLayer.update(dt)
         }
         
     }
