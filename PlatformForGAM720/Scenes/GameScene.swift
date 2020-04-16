@@ -12,6 +12,12 @@
 
 import SpriteKit
 
+// Several gamestates of the game
+enum GameState {
+    case ready, ongoing, paused, finished
+}
+
+
 class GameScene: SKScene {
     
     // Variables
@@ -22,6 +28,8 @@ class GameScene: SKScene {
     
     var lastTime: TimeInterval = 0
     var dt: TimeInterval = 0
+    
+    var gameState = GameState.ready
     
     // Override didMove Function
     
@@ -56,6 +64,30 @@ class GameScene: SKScene {
         }
     }
     
+    // What happens when screen is touched
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        
+        // if gamestate is ready, change it to ongoing
+        switch gameState {
+        case .ready:
+            gameState = .ongoing
+        default:
+            break
+        }
+    }
+    
+    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
+        
+    }
+    
+    override func touchesCancelled(_ touches: Set<UITouch>, with event: UIEvent?) {
+        
+    }
+    
+    // // / / / / 
+    
+    
     // On the tile map make sure images e.g. trees are child nodes of the floor tiles so they appear
 
     override func update(_ currentTime: TimeInterval) {
@@ -68,6 +100,9 @@ class GameScene: SKScene {
         }
         lastTime = currentTime
         
-        worldLayer.update(dt)
+        if gameState == .ongoing {
+            worldLayer.update(dt)
+        }
+        
     }
 }
