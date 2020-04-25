@@ -24,4 +24,17 @@ struct GameConstants {
         static let hudZ: CGFloat = 5
     }
     
+    struct StringConstants {
+        static let exampleTilesName = "Example Tiles"
+        static let worldBackgroundNames = ["exampleBackground", "exampleBackground2"]
+        static let playerName = "Player"
+              static let playerImageName = "Idle_0"
+              static let exampleNodeName = "Example Nodes"
+              
+              static let playerIdleAtlas = "Player Idle Atlas"
+              static let playerRunAtlas = "Player Run Atlas"
+              static let playerJumpAtlas = "Player Jump Atlas"
+              static let playerDieAtlas = "Player Die Atlas"
+    }
+    
 }

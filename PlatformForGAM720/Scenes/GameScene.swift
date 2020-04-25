@@ -32,9 +32,14 @@ class GameScene: SKScene {
     
     var gameState = GameState.ready
     
+    var player: Player!
+    
     // Override didMove Function
     
     override func didMove(to view: SKView) {
+        physicsWorld.contactDelegate = self
+        physicsWorld.gravity = CGVector(dx: 0.0, dy: -6.0)
+        
         
         createLayers()
         
@@ -60,7 +65,7 @@ class GameScene: SKScene {
         
         // background
         for i in 0...1 {
-            let backgroundImage = SKSpriteNode(imageNamed: "exampleBackground")
+            let backgroundImage = SKSpriteNode(imageNamed: GameConstants.StringConstants.worldBackgroundNames[0])
             backgroundImage.name = String(i)
             backgroundImage.scale(to: frame.size, width: false, multiplier: 1.0)
             // start in bottom corner
@@ -87,10 +92,32 @@ class GameScene: SKScene {
     
     // scale the map properly on screen
     func loadTileMap() {
-        if let exampleTiles = mapNode.childNode(withName: "Example Tiles Map") as? SKTileMapNode {
+        if let exampleTiles = mapNode.childNode(withName: GameConstants.StringConstants.exampleTilesName) as? SKTileMapNode {
             tileMap = exampleTiles
-            tileMap.scale(to: frame.size, width: false, multiplier: 1.0)
+          tileMap.scale(to: frame.size, width: false, multiplier: 1.0)
         }
+        
+        
+        // called from below
+        addPlayer()
+        
+    }
+    
+   // Player functions, initialise sprite
+
+    func addPlayer() {
+        player = Player(imageNamed: GameConstants.StringConstants.playerImageName)
+        // scale player sprite to a 10th of scene aka 0.1
+        player.scale(to: frame.size, width: false, multiplier: 0.1)
+        player.name = GameConstants.StringConstants.playerName
+        
+        // Physics of the player
+        PhysicsHelper.addPhysicsBody(to: player, with: player.name!)
+        
+        // position the start of the player
+        player.position = CGPoint(x: frame.midX/2.0, y: frame.midY)
+        player.zPosition = GameConstants.ZPositions.playerZ
+        addChild(player)
     }
     
     // What happens when screen is touched
@@ -130,9 +157,17 @@ class GameScene: SKScene {
         lastTime = currentTime
         
         if gameState == .ongoing {
-            worldLayer.update(dt)
+           worldLayer.update(dt)
             backgroundLayer.update(dt)
         }
         
     }
+}
+
+// Fixes the error "Cannot assign value of type 'GameScene' to type 'SKPhysicsContactDelegate?'" for physicsWorld.contactDelegate = self. Needs framework gamescene shown below.
+// Needed for physics elements of the game
+
+extension GameScene: SKPhysicsContactDelegate {
+    
+    
 }
