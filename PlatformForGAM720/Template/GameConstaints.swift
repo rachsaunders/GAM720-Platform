@@ -29,7 +29,13 @@ struct GameConstants {
         static let worldBackgroundNames = ["exampleBackground", "exampleBackground2"]
         static let playerName = "Player"
               static let playerImageName = "Idle_0"
-              static let exampleNodeName = "Example Nodes"
+             
+        // Part of physics properties, from file GroundNode.swift
+        static let groundNodeName = "GroundNode"
+        
+        
+        
+        static let exampleNodeName = "Example Nodes"
               
               static let playerIdleAtlas = "Player Idle Atlas"
               static let playerRunAtlas = "Player Run Atlas"

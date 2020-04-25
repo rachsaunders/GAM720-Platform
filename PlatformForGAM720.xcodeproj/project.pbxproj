@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		184D8D5A2444C3DF0071B8EE /* Layer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 184D8D592444C3DF0071B8EE /* Layer.swift */; };
 		187083A724546F60007091B3 /* PhysicsHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 187083A624546F60007091B3 /* PhysicsHelper.swift */; };
+		187083A924547C5D007091B3 /* GroundNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 187083A824547C5D007091B3 /* GroundNode.swift */; };
 		18B6BF5624432F2600BF10A7 /* World1Level1.sks in Resources */ = {isa = PBXBuildFile; fileRef = 18B6BF5524432F2600BF10A7 /* World1Level1.sks */; };
 		18B6BF5924432FE400BF10A7 /* TileSets.sks in Resources */ = {isa = PBXBuildFile; fileRef = 18B6BF5824432FE400BF10A7 /* TileSets.sks */; };
 		18B6BF5C24434DC500BF10A7 /* SKNode+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B6BF5B24434DC500BF10A7 /* SKNode+Extensions.swift */; };
@@ -26,6 +27,7 @@
 /* Begin PBXFileReference section */
 		184D8D592444C3DF0071B8EE /* Layer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Layer.swift; sourceTree = "<group>"; };
 		187083A624546F60007091B3 /* PhysicsHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhysicsHelper.swift; sourceTree = "<group>"; };
+		187083A824547C5D007091B3 /* GroundNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroundNode.swift; sourceTree = "<group>"; };
 		18B6BF5524432F2600BF10A7 /* World1Level1.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = World1Level1.sks; sourceTree = "<group>"; };
 		18B6BF5824432FE400BF10A7 /* TileSets.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = TileSets.sks; sourceTree = "<group>"; };
 		18B6BF5B24434DC500BF10A7 /* SKNode+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SKNode+Extensions.swift"; sourceTree = "<group>"; };
@@ -175,6 +177,7 @@
 			isa = PBXGroup;
 			children = (
 				18F7CD5E2448B3C300FB9406 /* Player.swift */,
+				187083A824547C5D007091B3 /* GroundNode.swift */,
 			);
 			path = "Custom Classes";
 			sourceTree = "<group>";
@@ -260,6 +263,7 @@
 				18BCBB00243DFD1C001DAF9E /* AppDelegate.swift in Sources */,
 				18F7CD5A2448AB5100FB9406 /* RepeatingBackground.swift in Sources */,
 				18F7CD5C2448AFD300FB9406 /* GameConstaints.swift in Sources */,
+				187083A924547C5D007091B3 /* GroundNode.swift in Sources */,
 				187083A724546F60007091B3 /* PhysicsHelper.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

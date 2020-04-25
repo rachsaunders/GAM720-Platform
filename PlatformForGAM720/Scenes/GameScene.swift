@@ -95,6 +95,10 @@ class GameScene: SKScene {
         if let exampleTiles = mapNode.childNode(withName: GameConstants.StringConstants.exampleTilesName) as? SKTileMapNode {
             tileMap = exampleTiles
           tileMap.scale(to: frame.size, width: false, multiplier: 1.0)
+            
+            // physics properties
+            // It's called ground as I just labelled the properties on the tiles on tileMap
+            PhysicsHelper.addPhysicsBody(to: tileMap, and: "ground")
         }
         
         
@@ -162,6 +166,25 @@ class GameScene: SKScene {
         }
         
     }
+    
+    // Physics properties continued
+    
+    override func didSimulatePhysics() {
+        for node in tileMap[GameConstants.StringConstants.groundNodeName] {
+            
+            if let groundNode = node as? GroundNode {
+                let groundY = (groundNode.position.y + groundNode.size.height) * tileMap.yScale
+                let playerY = player.position.y - player.size.height/3
+                groundNode.isBodyActivated = playerY > groundY
+            }
+        }
+    }
+    
+    
+    
+    
+    
+    
 }
 
 // Fixes the error "Cannot assign value of type 'GameScene' to type 'SKPhysicsContactDelegate?'" for physicsWorld.contactDelegate = self. Needs framework gamescene shown below.
