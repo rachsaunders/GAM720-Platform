@@ -10,6 +10,7 @@
 		184D8D5A2444C3DF0071B8EE /* Layer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 184D8D592444C3DF0071B8EE /* Layer.swift */; };
 		187083A724546F60007091B3 /* PhysicsHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 187083A624546F60007091B3 /* PhysicsHelper.swift */; };
 		187083A924547C5D007091B3 /* GroundNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 187083A824547C5D007091B3 /* GroundNode.swift */; };
+		187083AB2454C4E7007091B3 /* AnimationHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 187083AA2454C4E7007091B3 /* AnimationHelper.swift */; };
 		18B6BF5624432F2600BF10A7 /* World1Level1.sks in Resources */ = {isa = PBXBuildFile; fileRef = 18B6BF5524432F2600BF10A7 /* World1Level1.sks */; };
 		18B6BF5924432FE400BF10A7 /* TileSets.sks in Resources */ = {isa = PBXBuildFile; fileRef = 18B6BF5824432FE400BF10A7 /* TileSets.sks */; };
 		18B6BF5C24434DC500BF10A7 /* SKNode+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B6BF5B24434DC500BF10A7 /* SKNode+Extensions.swift */; };
@@ -28,6 +29,7 @@
 		184D8D592444C3DF0071B8EE /* Layer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Layer.swift; sourceTree = "<group>"; };
 		187083A624546F60007091B3 /* PhysicsHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhysicsHelper.swift; sourceTree = "<group>"; };
 		187083A824547C5D007091B3 /* GroundNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroundNode.swift; sourceTree = "<group>"; };
+		187083AA2454C4E7007091B3 /* AnimationHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimationHelper.swift; sourceTree = "<group>"; };
 		18B6BF5524432F2600BF10A7 /* World1Level1.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = World1Level1.sks; sourceTree = "<group>"; };
 		18B6BF5824432FE400BF10A7 /* TileSets.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = TileSets.sks; sourceTree = "<group>"; };
 		18B6BF5B24434DC500BF10A7 /* SKNode+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SKNode+Extensions.swift"; sourceTree = "<group>"; };
@@ -64,12 +66,13 @@
 			path = Layers;
 			sourceTree = "<group>";
 		};
-		187083A524546F3D007091B3 /* Physics */ = {
+		187083A524546F3D007091B3 /* Helper Files */ = {
 			isa = PBXGroup;
 			children = (
 				187083A624546F60007091B3 /* PhysicsHelper.swift */,
+				187083AA2454C4E7007091B3 /* AnimationHelper.swift */,
 			);
-			path = Physics;
+			path = "Helper Files";
 			sourceTree = "<group>";
 		};
 		18B6BF5324432EB500BF10A7 /* Scene Editor Files */ = {
@@ -123,7 +126,7 @@
 		18BCBAFE243DFD1C001DAF9E /* PlatformForGAM720 */ = {
 			isa = PBXGroup;
 			children = (
-				187083A524546F3D007091B3 /* Physics */,
+				187083A524546F3D007091B3 /* Helper Files */,
 				18F7CD5D2448B3A200FB9406 /* Custom Classes */,
 				184D8D582444C3C00071B8EE /* Layers */,
 				18B6BF5A24434DA700BF10A7 /* Extensions */,
@@ -261,6 +264,7 @@
 				18BCBB08243DFD1C001DAF9E /* GameViewController.swift in Sources */,
 				18F7CD5F2448B3C300FB9406 /* Player.swift in Sources */,
 				18BCBB00243DFD1C001DAF9E /* AppDelegate.swift in Sources */,
+				187083AB2454C4E7007091B3 /* AnimationHelper.swift in Sources */,
 				18F7CD5A2448AB5100FB9406 /* RepeatingBackground.swift in Sources */,
 				18F7CD5C2448AFD300FB9406 /* GameConstaints.swift in Sources */,
 				187083A924547C5D007091B3 /* GroundNode.swift in Sources */,

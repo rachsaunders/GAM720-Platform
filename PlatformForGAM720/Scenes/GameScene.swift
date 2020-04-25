@@ -30,7 +30,18 @@ class GameScene: SKScene {
     var lastTime: TimeInterval = 0
     var dt: TimeInterval = 0
     
-    var gameState = GameState.ready
+    var gameState = GameState.ready {
+        willSet {
+            switch newValue {
+            case .ongoing:
+                player.state = .running
+            case .finished:
+                player.state = .idle
+            default:
+                break // no default is needed
+            }
+        }
+    }
     
     var player: Player!
     
@@ -121,6 +132,13 @@ class GameScene: SKScene {
         // position the start of the player
         player.position = CGPoint(x: frame.midX/2.0, y: frame.midY)
         player.zPosition = GameConstants.ZPositions.playerZ
+      
+        // animations of sprite/textures
+        player.loadTextures()
+        
+        // start off idle sprite
+        player.state = .idle
+        
         addChild(player)
     }
     

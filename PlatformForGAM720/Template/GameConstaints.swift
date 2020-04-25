@@ -28,19 +28,26 @@ struct GameConstants {
         static let exampleTilesName = "Example Tiles"
         static let worldBackgroundNames = ["exampleBackground", "exampleBackground2"]
         static let playerName = "Player"
-              static let playerImageName = "Idle_0"
-             
+        static let playerImageName = "Idle_0"
+        
         // Part of physics properties, from file GroundNode.swift
         static let groundNodeName = "GroundNode"
         
+        // Player Animations
+        static let playerIdleAtlas = "Player Idle Atlas"
+        static let playerRunAtlas = "Player Run Atlas"
+        static let playerJumpAtlas = "Player Jump Atlas"
+        static let playerDieAtlas = "Player Die Atlas"
+        
+        // The sprite files are called Idle_0, Idle_1 etc
+        static let idlePrefixKey = "Idle_"
+        static let runPrefixKey = "Run_"
+        static let jumpPrefixKey = "Jump_"
+        static let diePrefixKey = "Die_"
+        
+      //  static let exampleNodeName = "Example Nodes"
         
         
-        static let exampleNodeName = "Example Nodes"
-              
-              static let playerIdleAtlas = "Player Idle Atlas"
-              static let playerRunAtlas = "Player Run Atlas"
-              static let playerJumpAtlas = "Player Jump Atlas"
-              static let playerDieAtlas = "Player Die Atlas"
     }
     
 }

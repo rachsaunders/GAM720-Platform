@@ -12,8 +12,52 @@
 
 import SpriteKit
 
+enum PlayerState {
+    case idle, running
+}
+
 class Player: SKSpriteNode {
     
-    // To do
+    var runFrames = [SKTexture]()
+    var idleFrames = [SKTexture]()
+    var jumpFrames = [SKTexture]()
+    var dieFrames = [SKTexture]()
+    
+    // Set the variable as idle first as this will be what the player does first
+    var state = PlayerState.idle {
+        willSet {
+            animate(for: newValue)
+        }
+    }
+    
+    func loadTextures() {
+       
+        // initialization of properties - idle, run, jump, die
+        
+        idleFrames = AnimationHelper.loadTextures(from: SKTextureAtlas(named: GameConstants.StringConstants.playerIdleAtlas), withName: GameConstants.StringConstants.idlePrefixKey)
+        runFrames = AnimationHelper.loadTextures(from: SKTextureAtlas(named: GameConstants.StringConstants.playerRunAtlas), withName: GameConstants.StringConstants.runPrefixKey)
+        jumpFrames = AnimationHelper.loadTextures(from: SKTextureAtlas(named: GameConstants.StringConstants.playerJumpAtlas), withName: GameConstants.StringConstants.jumpPrefixKey)
+        dieFrames = AnimationHelper.loadTextures(from: SKTextureAtlas(named: GameConstants.StringConstants.playerDieAtlas), withName: GameConstants.StringConstants.diePrefixKey)
+
+        
+    }
+    
+    func animate(for State: PlayerState) {
+        
+        // To stop all animations at once on top of each other
+        removeAllActions()
+        
+        // May need to change timeperframe if it's being funny in running the app on iPhone
+        switch state {
+        case .idle:
+            self.run(SKAction.repeatForever(SKAction.animate(with: idleFrames, timePerFrame: 0.5, resize: true, restore: true)))
+        case .running:
+            self.run(SKAction.repeatForever(SKAction.animate(with: runFrames, timePerFrame: 0.5, resize: true, restore: true)))
+            
+            // TO DO - DIE AND JUMP
+            
+        }
+        
+    }
 
 }
