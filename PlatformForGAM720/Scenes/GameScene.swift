@@ -54,6 +54,10 @@ class GameScene: SKScene {
         
         createLayers()
         
+//        // HOPING THIS FIXES THE ERROR/BUG OF SPRITE NOT RUNNING
+//        isPaused = true
+//        isPaused = false 
+        
     }
     
     
@@ -137,7 +141,8 @@ class GameScene: SKScene {
         player.loadTextures()
         
         // start off idle sprite
-        player.state = .idle
+        // THIS WAS CHANGED TO RUNNING TO FIX AN ERROR THAT THE SPRITE DIDN'T RUN //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        player.state = .running
         
         addChild(player)
     }

@@ -14,6 +14,7 @@ import SpriteKit
 
 enum PlayerState {
     case idle, running
+    
 }
 
 class Player: SKSpriteNode {
@@ -54,6 +55,7 @@ class Player: SKSpriteNode {
         case .running:
             self.run(SKAction.repeatForever(SKAction.animate(with: runFrames, timePerFrame: 0.5, resize: true, restore: true)))
             
+
             // TO DO - DIE AND JUMP
             
         }
