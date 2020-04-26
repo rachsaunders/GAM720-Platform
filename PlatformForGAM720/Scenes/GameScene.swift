@@ -141,20 +141,45 @@ class GameScene: SKScene {
         player.loadTextures()
         
         // start off idle sprite
-        // THIS WAS CHANGED TO RUNNING TO FIX AN ERROR THAT THE SPRITE DIDN'T RUN //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        // THIS WAS CHANGED TO RUNNING FROM IDLE TO FIX AN ERROR THAT THE SPRITE DIDN'T RUN //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         player.state = .running
         
         addChild(player)
+        
+        addPlayerActions()
+    }
+    
+    func addPlayerActions() {
+        // Jumping
+        let up = SKAction.moveBy(x: 0.0, y: frame.size.height/4, duration: 0.4)
+        // slows down at the end of jumping
+        up.timingMode = .easeOut
+        
+        player.createUserData(entry: up, forKey: GameConstants.StringConstants.jumpUpActionKey)
+        
+    }
+    
+    func jump() {
+        player.airbourne = true
+        player.turnGravity(on: false)
+        player.run(player.userData?.value(forKey: GameConstants.StringConstants.jumpUpActionKey) as! SKAction) {
+            self.player.turnGravity(on: true)
+        }
     }
     
     // What happens when screen is touched
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         
-        // if gamestate is ready, change it to ongoing
+        // if gamestate is ready, changes it to ongoing
         switch gameState {
         case .ready:
             gameState = .ongoing
+        case .ongoing:
+            // stops continous jumping
+            if !player.airbourne {
+                jump()
+            }
         default:
             break
         }

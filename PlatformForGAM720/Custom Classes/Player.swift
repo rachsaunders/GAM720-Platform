@@ -31,6 +31,8 @@ class Player: SKSpriteNode {
         }
     }
     
+    var airbourne = false
+    
     func loadTextures() {
        
         // initialization of properties - idle, run, jump, die

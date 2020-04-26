@@ -47,6 +47,8 @@ struct GameConstants {
         
       //  static let exampleNodeName = "Example Nodes"
         
+        static let jumpUpActionKey = "JumpUp"
+        static let brakeDescendActionKey = "BrakeDescent"
         
     }
     
