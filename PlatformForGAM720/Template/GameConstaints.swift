@@ -15,6 +15,19 @@ import CoreGraphics
 
 struct GameConstants {
     
+    struct PhysicsCategories {
+        static let noCategory: UInt32 = 0
+        static let allCategory: UInt32 = UInt32.max
+        static let playerCategory: UInt32 = 0x1
+        static let groundCategory: UInt32 = 0x1 << 1
+        static let finishCategory: UInt32 = 0x1 << 2
+        static let collectibleCategory: UInt32 = 0x1 << 3
+        static let enemyCategory:UInt32 = 0x1 << 4
+        static let grameCategory:UInt32 = 0x1 << 5
+        static let ceilingCategory: UInt32 = 0x1 << 6
+        
+    }
+    
     struct ZPositions {
         static let farBGZ: CGFloat = 0
         static let closeBGZ: CGFloat = 1

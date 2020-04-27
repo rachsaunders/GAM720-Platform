@@ -26,6 +26,11 @@ class PhysicsHelper {
             sprite.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: sprite.size.width/2, height: sprite.size.height))
             sprite.physicsBody!.restitution = 0.0
             sprite.physicsBody!.allowsRotation = false
+            
+            sprite.physicsBody!.categoryBitMask = GameConstants.PhysicsCategories.playerCategory
+            // Finish line yet to do btw (finish category)
+            sprite.physicsBody!.collisionBitMask = GameConstants.PhysicsCategories.groundCategory | GameConstants.PhysicsCategories.finishCategory
+            sprite.physicsBody?.contactTestBitMask = GameConstants.PhysicsCategories.allCategory 
         default:
             sprite.physicsBody = SKPhysicsBody(rectangleOf: sprite.size)
         }
@@ -60,7 +65,8 @@ class PhysicsHelper {
                         platform.append(index)
                     } else if !platform.isEmpty {
                         let x = CGFloat(platform[0]) * tileSize.width
-                        let y = CGFloat(row) * tileSize.height
+                        // let y was changed to _ to fix an error
+                        _ = CGFloat(row) * tileSize.height
                         let tileNode = GroundNode(with: CGSize(width: tileSize.width * CGFloat(platform.count), height: tileSize.height))
                         tileNode.position = CGPoint(x: x, y: x)
                         tileNode.anchorPoint = CGPoint.zero

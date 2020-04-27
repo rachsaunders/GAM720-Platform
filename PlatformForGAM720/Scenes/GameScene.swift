@@ -45,6 +45,12 @@ class GameScene: SKScene {
     
     var player: Player!
     
+    // start of touch to be false - this is for the double jump
+    var touch = false
+    
+    // double jump cont
+    var brake = false
+    
     // Override didMove Function
     
     override func didMove(to view: SKView) {
@@ -157,15 +163,41 @@ class GameScene: SKScene {
         
         player.createUserData(entry: up, forKey: GameConstants.StringConstants.jumpUpActionKey)
         
+        // double jump cont
+        let move = SKAction.moveBy(x: 0.0, y: player.size.height, duration: 0.4)
+        let jump = SKAction.animate(with: player.jumpFrames, timePerFrame: 0.4/Double(player.jumpFrames.count))
+        let group = SKAction.group([move, jump])
+        
+        player.createUserData(entry: group, forKey: GameConstants.StringConstants.brakeDescendActionKey)
+        
     }
     
     func jump() {
         player.airbourne = true
         player.turnGravity(on: false)
         player.run(player.userData?.value(forKey: GameConstants.StringConstants.jumpUpActionKey) as! SKAction) {
-            self.player.turnGravity(on: true)
+        
+            // for double jump
+            if self.touch {
+                self.player.run(self.player.userData?.value(forKey: GameConstants.StringConstants.jumpUpActionKey) as! SKAction, completion: {
+                    self.player.turnGravity(on: true)
+                })
+            }
         }
     }
+    
+    // double jump cont
+    // Stops double jumping being constant
+    func brakedescend() {
+        brake = true
+        // speed of player in y direction, cancel out current momentom
+        player.physicsBody!.velocity.dy = 0.0
+        
+        player.run(player.userData?.value(forKey: GameConstants.StringConstants.brakeDescendActionKey) as! SKAction)
+    }
+    
+    
+    
     
     // What happens when screen is touched
     
@@ -176,9 +208,13 @@ class GameScene: SKScene {
         case .ready:
             gameState = .ongoing
         case .ongoing:
+            // for double jump
+            touch = true
             // stops continous jumping
             if !player.airbourne {
                 jump()
+            } else if !brake {
+                brakedescend()
             }
         default:
             break
@@ -186,11 +222,15 @@ class GameScene: SKScene {
     }
     
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
-        
+         // double jump
+        touch = false
+        player.turnGravity(on: true)
     }
     
     override func touchesCancelled(_ touches: Set<UITouch>, with event: UIEvent?) {
-        
+         // double jump
+        touch = false
+        player.turnGravity(on: true)
     }
     
     // // / / / / 
@@ -238,7 +278,34 @@ class GameScene: SKScene {
 // Fixes the error "Cannot assign value of type 'GameScene' to type 'SKPhysicsContactDelegate?'" for physicsWorld.contactDelegate = self. Needs framework gamescene shown below.
 // Needed for physics elements of the game
 
+// What happens when contact occurs
+
 extension GameScene: SKPhysicsContactDelegate {
     
+    func didBegin(_ contact: SKPhysicsContact) {
+        let contactMask = contact.bodyA.categoryBitMask | contact.bodyB.categoryBitMask
+        
+        switch contactMask {
+            // contact between player and the ground, if player lands on ground
+        case GameConstants.PhysicsCategories.playerCategory | GameConstants.PhysicsCategories.groundCategory:
+           // allows to jump again
+            player.airbourne = false
+            // stops continous jumping
+            brake = false 
+        default:
+            break
+        }
+    }
     
+    func didEnd(_ contact: SKPhysicsContact) {
+         let contactMask = contact.bodyA.categoryBitMask | contact.bodyB.categoryBitMask
+        
+        switch contactMask {
+            // If player walks off the ledge
+              case GameConstants.PhysicsCategories.playerCategory | GameConstants.PhysicsCategories.groundCategory:
+                player.airbourne = true
+              default:
+                  break
+              }
+    }
 }
