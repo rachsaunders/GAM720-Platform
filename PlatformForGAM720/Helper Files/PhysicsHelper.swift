@@ -30,13 +30,27 @@ class PhysicsHelper {
             sprite.physicsBody!.categoryBitMask = GameConstants.PhysicsCategories.playerCategory
             // Finish line yet to do btw (finish category)
             sprite.physicsBody!.collisionBitMask = GameConstants.PhysicsCategories.groundCategory | GameConstants.PhysicsCategories.finishCategory
-            sprite.physicsBody?.contactTestBitMask = GameConstants.PhysicsCategories.allCategory
+            // changed the below from ? to ! 27/04/20
+            sprite.physicsBody!.contactTestBitMask = GameConstants.PhysicsCategories.allCategory
             
+        // Finish Line
         case GameConstants.StringConstants.finishLineName:
             sprite.physicsBody = SKPhysicsBody(rectangleOf: sprite.size)
             sprite.physicsBody!.categoryBitMask = GameConstants.PhysicsCategories.finishCategory
+            
+        // Enemy/Log
+        case GameConstants.StringConstants.enemyName:
+            sprite.physicsBody = SKPhysicsBody(rectangleOf: sprite.size)
+            sprite.physicsBody?.categoryBitMask = GameConstants.PhysicsCategories.enemyCategory
+            
         default:
             sprite.physicsBody = SKPhysicsBody(rectangleOf: sprite.size)
+        }
+        
+        // Applies to all sprites but player, physics bodies will stay in place regardless of player
+        if name != GameConstants.StringConstants.playerName {
+            sprite.physicsBody!.contactTestBitMask = GameConstants.PhysicsCategories.playerCategory
+            sprite.physicsBody!.isDynamic = false
         }
         
         

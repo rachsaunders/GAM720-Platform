@@ -23,7 +23,7 @@ struct GameConstants {
         static let finishCategory: UInt32 = 0x1 << 2
         static let collectibleCategory: UInt32 = 0x1 << 3
         static let enemyCategory:UInt32 = 0x1 << 4
-        static let grameCategory:UInt32 = 0x1 << 5
+        static let gameCategory:UInt32 = 0x1 << 5
         static let ceilingCategory: UInt32 = 0x1 << 6
         
     }
@@ -48,6 +48,9 @@ struct GameConstants {
         
         // Obviously finish line - make invisable in final app through tile map design
         static let finishLineName = "FinishLine"
+        
+        // The enemy aka the log that is an obstacle
+        static let enemyName = "Enemy"
         
         // Player Animations
         static let playerIdleAtlas = "Player Idle Atlas"

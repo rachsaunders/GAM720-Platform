@@ -60,9 +60,9 @@ class GameScene: SKScene {
         
         createLayers()
         
-//        // HOPING THIS FIXES THE ERROR/BUG OF SPRITE NOT RUNNING
-//        isPaused = true
-//        isPaused = false 
+      // This was coded out but now back in as it previously fixed an error earlier
+        isPaused = true
+        isPaused = false
         
     }
     
@@ -119,11 +119,14 @@ class GameScene: SKScene {
             
             // physics properties
             // It's called ground as I just labelled the properties on the tiles on tileMap
+            // this makes the floor tiles appear to be solid and the character doesn't fall through
             PhysicsHelper.addPhysicsBody(to: tileMap, and: "ground")
             
             for child in exampleTiles.children {
                 if let sprite = child as? SKSpriteNode, sprite.name != nil {
                     ObjectHelper.handleChild(sprite: sprite, with: sprite.name!)
+                    // just checking the sprites are called and in what order as currently there is an error
+                    print(sprite.name!)
                 }
             }
         }
@@ -169,7 +172,7 @@ class GameScene: SKScene {
         
         player.createUserData(entry: up, forKey: GameConstants.StringConstants.jumpUpActionKey)
         
-        // double jump cont
+       //  double jump cont
         let move = SKAction.moveBy(x: 0.0, y: player.size.height, duration: 0.4)
         let jump = SKAction.animate(with: player.jumpFrames, timePerFrame: 0.4/Double(player.jumpFrames.count))
         let group = SKAction.group([move, jump])
@@ -191,6 +194,8 @@ class GameScene: SKScene {
             }
         }
     }
+    // I THINK THE ERROR LIES IN THE CODE BELOW NEED TO DOUBLE CHECK /////////////////////////////////////
+    
     
     // double jump cont
     // Stops double jumping being constant
@@ -202,7 +207,28 @@ class GameScene: SKScene {
         player.run(player.userData?.value(forKey: GameConstants.StringConstants.brakeDescendActionKey) as! SKAction)
     }
     
+    func handleEnemyContact() {
+        die(reason: 0)
+    }
     
+    func die(reason: Int) {
+        // stop the game when player dies
+        gameState = .finished
+        player.turnGravity(on: false)
+        // die animation
+        let deathAnimation: SKAction!
+        switch reason {
+        case 0:
+            deathAnimation = SKAction.animate(with: player.dieFrames, timePerFrame: 0.1, resize: true, restore: true)
+        default:
+            deathAnimation = SKAction.animate(with: player.dieFrames, timePerFrame: 0.1, resize: true, restore: true)
+        }
+        
+        // remove player from screen when dead
+        player.run(deathAnimation) {
+            self.player.removeFromParent()
+        }
+    }
     
     
     // What happens when screen is touched
@@ -301,6 +327,10 @@ extension GameScene: SKPhysicsContactDelegate {
             // finish line
         case GameConstants.PhysicsCategories.playerCategory | GameConstants.PhysicsCategories.finishCategory:
             gameState = .finished
+            // enemy contact
+        case GameConstants.PhysicsCategories.playerCategory | GameConstants.PhysicsCategories.enemyCategory:
+            handleEnemyContact()
+
         default:
             break
         }
