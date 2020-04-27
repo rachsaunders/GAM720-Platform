@@ -120,6 +120,12 @@ class GameScene: SKScene {
             // physics properties
             // It's called ground as I just labelled the properties on the tiles on tileMap
             PhysicsHelper.addPhysicsBody(to: tileMap, and: "ground")
+            
+            for child in exampleTiles.children {
+                if let sprite = child as? SKSpriteNode, sprite.name != nil {
+                    ObjectHelper.handleChild(sprite: sprite, with: sprite.name!)
+                }
+            }
         }
         
         
@@ -291,7 +297,10 @@ extension GameScene: SKPhysicsContactDelegate {
            // allows to jump again
             player.airbourne = false
             // stops continous jumping
-            brake = false 
+            brake = false
+            // finish line
+        case GameConstants.PhysicsCategories.playerCategory | GameConstants.PhysicsCategories.finishCategory:
+            gameState = .finished
         default:
             break
         }

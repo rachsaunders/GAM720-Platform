@@ -46,6 +46,9 @@ struct GameConstants {
         // Part of physics properties, from file GroundNode.swift
         static let groundNodeName = "GroundNode"
         
+        // Obviously finish line - make invisable in final app through tile map design
+        static let finishLineName = "FinishLine"
+        
         // Player Animations
         static let playerIdleAtlas = "Player Idle Atlas"
         static let playerRunAtlas = "Player Run Atlas"
