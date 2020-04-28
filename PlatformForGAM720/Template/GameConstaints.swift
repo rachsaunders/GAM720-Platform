@@ -23,7 +23,7 @@ struct GameConstants {
         static let finishCategory: UInt32 = 0x1 << 2
         static let collectibleCategory: UInt32 = 0x1 << 3
         static let enemyCategory:UInt32 = 0x1 << 4
-        static let gameCategory:UInt32 = 0x1 << 5
+        static let frameCategory:UInt32 = 0x1 << 5
         static let ceilingCategory: UInt32 = 0x1 << 6
         
     }

@@ -17,7 +17,6 @@ enum GameState {
     case ready, ongoing, paused, finished
 }
 
-
 class GameScene: SKScene {
     
     // Variables
@@ -56,6 +55,12 @@ class GameScene: SKScene {
     override func didMove(to view: SKView) {
         physicsWorld.contactDelegate = self
         physicsWorld.gravity = CGVector(dx: 0.0, dy: -6.0)
+        
+        // dying
+        physicsBody = SKPhysicsBody(edgeFrom: CGPoint(x: frame.minX, y: frame.minY), to: CGPoint(x: frame.maxX, y: frame.minY))
+        physicsBody!.categoryBitMask = GameConstants.PhysicsCategories.frameCategory
+        physicsBody!.contactTestBitMask = GameConstants.PhysicsCategories.playerCategory
+        
         
         
         createLayers()
@@ -220,6 +225,14 @@ class GameScene: SKScene {
         switch reason {
         case 0:
             deathAnimation = SKAction.animate(with: player.dieFrames, timePerFrame: 0.1, resize: true, restore: true)
+        // lift and drop player when dying from falling off
+        case 1:
+            let up = SKAction.moveTo(x: frame.midY, duration: 0.25)
+            let wait = SKAction.wait(forDuration: 0.1)
+            let down = SKAction.moveTo(y: -player.size.height, duration: 0.2)
+            
+            deathAnimation = SKAction.sequence([up,wait,down])
+
         default:
             deathAnimation = SKAction.animate(with: player.dieFrames, timePerFrame: 0.1, resize: true, restore: true)
         }
@@ -330,6 +343,10 @@ extension GameScene: SKPhysicsContactDelegate {
             // enemy contact
         case GameConstants.PhysicsCategories.playerCategory | GameConstants.PhysicsCategories.enemyCategory:
             handleEnemyContact()
+            // dying animation/method
+        case GameConstants.PhysicsCategories.playerCategory | GameConstants.PhysicsCategories.frameCategory:
+            physicsBody = nil
+            die(reason: 1)
 
         default:
             break
